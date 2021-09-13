@@ -1,7 +1,7 @@
 import java.lang.Exception
 
 data class Parking(val vehicles: MutableSet<Parkable>){
-    val maxVehicles: Short = 20
+    private val maxVehicles: Short = 20
     private var vehiclesXProfits: Pair<Int, Int> = Pair(0,0)
 
     fun checkinVehicle(vehicle: Vehicle): Boolean{
@@ -16,7 +16,7 @@ data class Parking(val vehicles: MutableSet<Parkable>){
                 parkable.vehicle?.let {
                     it.plate == plate
                 } ?: false
-            }.get(0)
+            }[0]
 
             val fee = parkableSearched.checkOutVehicle()
 
@@ -24,7 +24,6 @@ data class Parking(val vehicles: MutableSet<Parkable>){
                 error()
             }
             else {
-                vehiclesXProfits = Pair(vehiclesXProfits.first + 1, vehiclesXProfits.second + fee)
                 success(fee)
             }
 
@@ -42,16 +41,17 @@ data class Parking(val vehicles: MutableSet<Parkable>){
         println("Vehicles:")
         vehicles.forEach {
             it.vehicle?.let {  vehicle ->
-                println("${vehicle.plate}")
+                println(vehicle.plate)
             }
         }
     }
 
-    fun onSuccess (monto: Int){
+    private fun onSuccess (monto: Int){
+        vehiclesXProfits = Pair(vehiclesXProfits.first + 1, vehiclesXProfits.second + monto)
         println("SUCCESS: Your fee is $monto. Come back soon. ")
     }
 
-    fun onError(){
+    private fun onError(){
         println("ERROR: Sorry, the check-out failed")
     }
 

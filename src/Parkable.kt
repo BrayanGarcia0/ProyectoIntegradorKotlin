@@ -32,7 +32,7 @@ data class Parkable(var vehicle: Vehicle?){
         return fee
     }
 
-    fun calculateFee(vehicleType: VehicleType, parkedTime: Int, hasDiscountCard: Boolean): Int{
+    private fun calculateFee(vehicleType: VehicleType, parkedTime: Int, hasDiscountCard: Boolean): Int{
 //                    the user has 2 hours of fixed price
         var parkingCost: Int = vehicleType.tarifa
 

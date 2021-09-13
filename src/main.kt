@@ -1,6 +1,3 @@
-import java.lang.Exception
-import java.util.*
-import kotlin.math.ceil
 
 fun main() {
 
@@ -17,7 +14,7 @@ fun main() {
 }
 
 fun checkInVehicles(parking: Parking){
-    val car = Vehicle("AAA000", VehicleType.AUTO, discountCard = "DISCOUNT_CARD_001")
+    val car = Vehicle("AAA000", VehicleType.BUS, discountCard = "DISCOUNT_CARD_001")
     val moto = Vehicle("AAA001", VehicleType.MOTO)
 //    val minibus = Vehicle("AAA002", VehicleType.MINIBUS)
 //    val bus = Vehicle("AAA003", VehicleType.BUS, discountCard ="DISCOUNT_CARD_002")
